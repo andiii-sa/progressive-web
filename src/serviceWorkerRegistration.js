@@ -23,12 +23,13 @@ const isLocalhost = Boolean(
 export function register(config) {
   console.log("config", config);
   console.log("process.env.NODE_ENV", process.env.NODE_ENV);
-  // if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator) {
-  if ("serviceWorker" in navigator) {
+  if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator) {
+    // if ("serviceWorker" in navigator) {
     console.log("in register and prod");
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
     if (publicUrl.origin !== window.location.origin) {
+      console.log("publicUrl", publicUrl);
       // Our service worker won't work if PUBLIC_URL is on a different origin
       // from what our page is served on. This might happen if a CDN is used to
       // serve assets; see https://github.com/facebook/create-react-app/issues/2374
@@ -63,9 +64,13 @@ function registerValidSW(swUrl, config) {
   navigator.serviceWorker
     .register(swUrl)
     .then((registration) => {
+      console.log("navigator", navigator);
+      console.log("config", config);
+      console.log("registration", registration);
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
-        if (installingWorker == null) {
+        console.log("installingWorker", installingWorker);
+        if (installingWorker === null) {
           return;
         }
         installingWorker.onstatechange = () => {
@@ -109,6 +114,7 @@ function checkValidServiceWorker(swUrl, config) {
     headers: { "Service-Worker": "script" },
   })
     .then((response) => {
+      console.log("response", response);
       // Ensure service worker exists, and that we really are getting a JS file.
       const contentType = response.headers.get("content-type");
       if (
