@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Input } from "reactstrap";
 
 function Weather() {
@@ -48,6 +49,15 @@ function Weather() {
     <>
       <div className="App">
         <div className="d-flex flex-column justify-content-center align-items-center bg-dark min-vh-100">
+          <div>
+            <Link to={"/"} className="btn btn-info btn-sm m-1">
+              Home
+            </Link>
+            <Link to={"/covid"} className="btn btn-outline-info btn-sm m-1">
+              Covid
+            </Link>
+          </div>
+
           <h3 className="text-white">Search Weather</h3>
           <div className="col-4">
             <form>

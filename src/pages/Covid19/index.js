@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Covid19() {
   const [data, setData] = useState(null);
@@ -60,6 +61,12 @@ function Covid19() {
       <div className="App">
         <div className="d-flex flex-column justify-content-center align-items-center bg-dark min-vh-100">
           <div className="container">
+            <Link to={"/"} className="btn btn-outline-info btn-sm m-1">
+              Home
+            </Link>
+            <Link to={"/covid"} className="btn btn-info btn-sm m-1">
+              Covid
+            </Link>
             <h3 className="text-white">Search Covid19</h3>
             <h3 className="text-white">{`Total data : ${
               data?.results ?? "waiting api"
